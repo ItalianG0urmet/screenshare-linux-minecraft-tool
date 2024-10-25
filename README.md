@@ -14,6 +14,12 @@ This script is designed to monitor Java process instances running on your system
 - **Shell:** This is a Bash script and needs to be executed in a Bash shell.
 - **Package:** Must have lsof, awk, ps and grep
 
+## Usage
+
+You can execute the program with this commands:
+- **fish** -> 'wget -qO- https://raw.githubusercontent.com/ItalianG0urmet/screenshare-linux-minecraft-tool/main/tool.sh | bash'
+- **bash** -> 'bash <(wget -qO- https://raw.githubusercontent.com/ItalianG0urmet/screenshare-linux-minecraft-tool/main/tool.sh)'
+
 ## Possible output
 
 ```
