@@ -23,7 +23,8 @@ list_active_mods() {
   lsof -p "$pid" 2>/dev/null | grep '/mods/.*\.jar$' | awk -F '/mods/' '{print $2}'
   echo "----------------------"
   echo "Check for suspect .so:"
-  lsof -p $pid 2>/dev/null | grep '\.so' |  awk '{print $8}' | grep -v '/usr/lib/'
+  lsof -p "$pid" 2>/dev/null | grep '.so' | grep -v '/usr/lib/' | sed -n 's/.*\(\.minecraft\/.*\.so\).*/\1/p'
+
 
 }
 
