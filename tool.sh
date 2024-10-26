@@ -23,7 +23,7 @@ list_active_mods() {
   lsof -p "$pid" 2>/dev/null | grep '/mods/.*\.jar$' | awk -F '/mods/' '{print $2}'
   echo "----------------------"
   echo "Check for suspect .so:"
-  lsof -p 61396 2>/dev/null | grep '\.so' |  awk '{print $8}' | grep -v '/usr/lib/'
+  lsof -p $pid 2>/dev/null | grep '\.so' |  awk '{print $8}' | grep -v '/usr/lib/'
 
 }
 
