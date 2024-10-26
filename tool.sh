@@ -9,7 +9,7 @@ check_pid() {
 }
 
 get_time_info() {
-  last_deleted_file_date=$(ls -lt ~/.local/share/Trash/ | awk 'NR==2 {print $8}')
+  last_deleted_file_date=$(ls -lt "$HOME/.local/share/Trash/" | awk 'NR==2 {print $8}')
   minecraft_start_date=$(ps -p $pid -o etime= | tr -d '\n' | awk '{ if (NF==2) { print $1 } else { print $1 }}')
   minecraft_execution_date=$(ps -p $pid -o lstart= | cut -d' ' -f4-6)
 
@@ -21,6 +21,10 @@ get_time_info() {
 list_active_mods() {
   echo "Mods in the process with PID $pid:"
   lsof -p "$pid" 2>/dev/null | grep '/mods/.*\.jar$' | awk -F '/mods/' '{print $2}'
+  echo "----------------------"
+  echo "Check for suspect .so:"
+  lsof -p 61396 2>/dev/null | grep '\.so' |  awk '{print $8}' | grep -v '/usr/lib/'
+
 }
 
 fast_check() {
